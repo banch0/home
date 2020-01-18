@@ -85,17 +85,12 @@ func ExampleFindByDistricts() {
 	log.Println(result)
 }
 
-func ExampleSortByDistance() {
-	sortBy := SortByDistance(houses, 400)
-	log.Println(sortBy)
-}
-
 func ExampleSortByDistanceMin() {
-	sortBy := SortByDistanceMin(houses, 400)
+	sortBy := SortByDistanceMin(houses)
 	log.Println(sortBy)
 }
 
 func ExampleSortByDistanceMax() {
-	sortBy := SortByDistanceMax(houses, 400)
+	sortBy := SortByDistanceMax(houses)
 	log.Println(sortBy)
 }
