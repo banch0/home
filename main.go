@@ -15,7 +15,7 @@ type House struct {
 	Category         string
 	DistanceToCenter int64
 	City             City
-	Rayon            Rayon
+	Districts        Districts
 	Owner            string
 }
 
@@ -24,8 +24,8 @@ type City struct {
 	Name string
 }
 
-// Rayon ...
-type Rayon struct {
+// Districts ...
+type Districts struct {
 	ID   int8
 	Name string
 }
@@ -39,7 +39,7 @@ var AllHouses = []House{
 		Price:            350_000,
 		DistanceToCenter: 400,
 		City:             City{Name: "Khujand"},
-		Rayon:            Rayon{Name: "Airport"},
+		Districts:        Districts{Name: "Airport"},
 	}, {
 		ID:               2,
 		Name:             "Appartment somoni",
@@ -47,7 +47,7 @@ var AllHouses = []House{
 		Price:            300_000,
 		DistanceToCenter: 300,
 		City:             City{Name: "Dushanbe"},
-		Rayon:            Rayon{Name: "Шохмансур"},
+		Districts:        Districts{Name: "Шохмансур"},
 	}, {
 		ID:               3,
 		Name:             "Penthouse somoni",
@@ -55,7 +55,7 @@ var AllHouses = []House{
 		Price:            500_000,
 		DistanceToCenter: 100,
 		City:             City{Name: "Dushanbe"},
-		Rayon:            Rayon{Name: "Сомони"},
+		Districts:        Districts{Name: "Сомони"},
 	}, {
 		ID:               5,
 		Name:             "New House",
@@ -63,7 +63,7 @@ var AllHouses = []House{
 		Price:            450_000,
 		DistanceToCenter: 600,
 		City:             City{Name: "Dushanbe"},
-		Rayon:            Rayon{Name: "Сино"},
+		Districts:        Districts{Name: "Сино"},
 	}, {
 		ID:               5,
 		Name:             "Old House",
@@ -71,7 +71,7 @@ var AllHouses = []House{
 		Price:            550_000,
 		DistanceToCenter: 550,
 		City:             City{Name: "Dushanbe"},
-		Rayon:            Rayon{Name: "Сино"},
+		Districts:        Districts{Name: "Сино"},
 	}, {
 		ID:               4,
 		Name:             "House in center of Norak",
@@ -79,7 +79,7 @@ var AllHouses = []House{
 		Price:            200_000,
 		DistanceToCenter: 1100,
 		City:             City{Name: "Norak"},
-		Rayon:            Rayon{Name: "Center"},
+		Districts:        Districts{Name: "Center"},
 	},
 }
 
@@ -122,8 +122,8 @@ func SortByPrice(massive []House, amount int64) []House {
 	return result
 }
 
-// MainSortFunc ...
-func MainSortFunc(houses []House, predicate func(item House) bool) []House {
+// PrimarySortFunc ...
+func PrimarySortFunc(houses []House, predicate func(item House) bool) []House {
 	result := make([]House, 0)
 	for _, house := range houses {
 		if predicate(house) {
@@ -137,14 +137,14 @@ func MainSortFunc(houses []House, predicate func(item House) bool) []House {
 
 // SortByMaxPrice ...
 func SortByMaxPrice(houses []House, price int64) []House {
-	return MainSortFunc(houses, func(house House) bool {
+	return PrimarySortFunc(houses, func(house House) bool {
 		return house.Price >= price
 	})
 }
 
 // SortByMinPrice ...+
 func SortByMinPrice(houses []House, price int64) []House {
-	return MainSortFunc(houses, func(house House) bool {
+	return PrimarySortFunc(houses, func(house House) bool {
 		return house.Price <= price
 	})
 }
@@ -194,7 +194,7 @@ func SortByDistanceMax(houses []House) []House {
 
 // SearchByPriceBetween ...
 func SearchByPriceBetween(houses []House, price int64) []House {
-	return MainSortFunc(houses, func(house House) bool {
+	return PrimarySortFunc(houses, func(house House) bool {
 		if house.Price < price {
 			return false
 		}
@@ -211,7 +211,7 @@ func SearchByPriceBetween(houses []House, price int64) []House {
 func FindByDistrict(houses []House, district string) []House {
 	result := make([]House, 0)
 	for i, m := range houses {
-		if houses[i].Rayon.Name == district {
+		if houses[i].Districts.Name == district {
 			result = append(result, m)
 		}
 	}
@@ -223,7 +223,7 @@ func FindByDistricts(houses []House, districts []string) []House {
 	result := make([]House, 0)
 	for _, m := range houses {
 		for _, d := range districts {
-			if m.Rayon.Name == d {
+			if m.Districts.Name == d {
 				result = append(result, m)
 			}
 		}
