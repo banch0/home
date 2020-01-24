@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"sort"
 )
 
@@ -30,88 +29,9 @@ type Districts struct {
 	Name string
 }
 
-// AllHouses ...
-var AllHouses = []House{
-	{
-		ID:               1,
-		Name:             "Penthause somoni",
-		Owner:            "Bob",
-		Price:            350_000,
-		DistanceToCenter: 400,
-		City:             City{Name: "Khujand"},
-		Districts:        Districts{Name: "Airport"},
-	}, {
-		ID:               2,
-		Name:             "Appartment somoni",
-		Owner:            "Tyler",
-		Price:            300_000,
-		DistanceToCenter: 300,
-		City:             City{Name: "Dushanbe"},
-		Districts:        Districts{Name: "Шохмансур"},
-	}, {
-		ID:               3,
-		Name:             "Penthouse somoni",
-		Owner:            "Marla",
-		Price:            500_000,
-		DistanceToCenter: 100,
-		City:             City{Name: "Dushanbe"},
-		Districts:        Districts{Name: "Сомони"},
-	}, {
-		ID:               5,
-		Name:             "New House",
-		Owner:            "Cornelios",
-		Price:            450_000,
-		DistanceToCenter: 600,
-		City:             City{Name: "Dushanbe"},
-		Districts:        Districts{Name: "Сино"},
-	}, {
-		ID:               5,
-		Name:             "Old House",
-		Owner:            "Bob",
-		Price:            550_000,
-		DistanceToCenter: 550,
-		City:             City{Name: "Dushanbe"},
-		Districts:        Districts{Name: "Сино"},
-	}, {
-		ID:               4,
-		Name:             "House in center of Norak",
-		Owner:            "Marla",
-		Price:            200_000,
-		DistanceToCenter: 1100,
-		City:             City{Name: "Norak"},
-		Districts:        Districts{Name: "Center"},
-	},
-}
+func main() {}
 
-func main() {
-
-	sortByPrice := SortByPrice(AllHouses, 350_000)
-	log.Println("ByPrice:", sortByPrice)
-
-	result := FindByDistrict(AllHouses, "Сино")
-	log.Println("sort by district: ", result)
-
-	districts := []string{"Сино", "Сомони"}
-	result2 := FindByDistricts(AllHouses, districts)
-	log.Println("sort by districts: ", result2)
-
-	mass2 := SortByMaxPrice(AllHouses, 350000)
-	log.Println("After2: ", mass2)
-
-	byDisMin := SortByDistanceMin(AllHouses)
-	log.Println("By DisMin", byDisMin)
-
-	byDisMax := SortByDistanceMax(AllHouses)
-	log.Println("By DisMax", byDisMax)
-
-	byPrice := SortByMaxPrice(AllHouses, 300_000)
-	log.Println(byPrice)
-
-	betweenPrice := SearchByPriceBetween(AllHouses, 350_000)
-	log.Println(betweenPrice)
-}
-
-// SortByPrice ... sort by max price +
+// SortByPrice ...
 func SortByPrice(massive []House, amount int64) []House {
 	result := make([]House, 0)
 	for _, house := range massive {
@@ -148,8 +68,6 @@ func SortByMinPrice(houses []House, price int64) []House {
 		return house.Price <= price
 	})
 }
-
-// end ...
 
 // JustSortFunc ...
 func JustSortFunc(houses []House, predicate func(house House) bool) []House {
@@ -205,27 +123,34 @@ func SearchByPriceBetween(houses []House, price int64) []House {
 	})
 }
 
-// working ...
-
 // FindByDistrict ...
 func FindByDistrict(houses []House, district string) []House {
-	result := make([]House, 0)
-	for i, m := range houses {
-		if houses[i].Districts.Name == district {
-			result = append(result, m)
+	return FindBy(houses, func(house House) bool {
+		if house.Districts.Name == district {
+			return true
 		}
-	}
-	return result
+		return false
+	})
 }
 
 // FindByDistricts ...
 func FindByDistricts(houses []House, districts []string) []House {
-	result := make([]House, 0)
-	for _, m := range houses {
-		for _, d := range districts {
-			if m.Districts.Name == d {
-				result = append(result, m)
+	return FindBy(houses, func(house House) bool {
+		for _, district := range districts {
+			if house.Districts.Name == district {
+				return true
 			}
+		}
+		return false
+	})
+}
+
+// FindBy ...
+func FindBy(houses []House, predicate func(house House) bool) []House {
+	result := make([]House, 0)
+	for _, house := range houses {
+		if predicate(house) {
+			result = append(result, house)
 		}
 	}
 	return result
