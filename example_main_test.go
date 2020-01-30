@@ -93,5 +93,4 @@ func ExampleFindByDistricts() {
 	districts := []string{"Сино", "Сомони"}
 	fmt.Println(FindByDistricts(houses, districts))
 	// Output: [{3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {5  Old House 550000   550 {Dushanbe} {0 Сино} Bob}]
-
 }
