@@ -23,7 +23,7 @@ type City struct {
 	Name string
 }
 
-// Districts ...
+// Districts type
 type Districts struct {
 	ID   int8
 	Name string
