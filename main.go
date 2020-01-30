@@ -123,7 +123,7 @@ func SearchByPriceBetween(houses []House, price int64) []House {
 	})
 }
 
-// FindByDistrict ...
+// FindByDistrict with less(a, b)...
 func FindByDistrict(houses []House, district string) []House {
 	return FindBy(houses, func(house House) bool {
 		if house.Districts.Name == district {
@@ -133,7 +133,7 @@ func FindByDistrict(houses []House, district string) []House {
 	})
 }
 
-// FindByDistricts ...
+// FindByDistricts with less(a, b)...
 func FindByDistricts(houses []House, districts []string) []House {
 	return FindBy(houses, func(house House) bool {
 		for _, district := range districts {
