@@ -69,9 +69,14 @@ func ExampleSortByMinPrice() {
 	// Output: [{2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler}]
 }
 
-func ExampleSearchByPriceBetween() {
+func ExampleSearchByPriceBetweenFindOne() {
 	fmt.Println(SearchByPriceBetween(houses, 350_000))
 	// Output: [{1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob}]
+}
+
+func ExampleSearchByPriceBetweenNotFound() {
+	fmt.Println(SearchByPriceBetween(houses, 200_000))
+	// Output: []
 }
 
 func ExampleSortByDistanceMin() {

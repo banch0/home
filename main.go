@@ -68,17 +68,6 @@ func SortByMinPrice(houses []House, price int64) []House {
 	})
 }
 
-// JustSortFunc ...
-func JustSortFunc(houses []House, predicate func(house House) bool) []House {
-	result := make([]House, len(houses))
-	for _, house := range houses {
-		if predicate(house) {
-			result = append(result, house)
-		}
-	}
-	return result
-}
-
 // SortByDistanceMin ...
 func SortByDistanceMin(houses []House) []House {
 	result := make([]House, len(houses))
