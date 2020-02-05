@@ -32,13 +32,12 @@ type District struct {
 func main() {}
 
 // SortByPrice ...
-func SortByPrice(massive []House, amount int64) []House {
-	result := make([]House, 0)
-	for _, house := range massive {
-		if house.Price <= amount {
-			result = append(result, house)
-		}
-	}
+func SortByPrice(houses []House) []House {
+	result := make([]House, len(houses))
+	copy(result, houses)
+	sort.Slice(result, func(i, j int) bool {
+		return houses[i].Price <= houses[j].Price
+	})
 	return result
 }
 
@@ -77,16 +76,6 @@ func JustSortFunc(houses []House, predicate func(house House) bool) []House {
 			result = append(result, house)
 		}
 	}
-	return result
-}
-
-// FilterBy ...
-func FilterBy(houses []House, less func(a, b House) bool) []House {
-	result := make([]House, len(houses))
-	copy(result, houses)
-	sort.Slice(result, func(i, j int) bool {
-		return less(houses[i], houses[j])
-	})
 	return result
 }
 

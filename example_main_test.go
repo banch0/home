@@ -36,7 +36,7 @@ var houses = []House{
 		City:             City{Name: "Dushanbe"},
 		District:         District{Name: "Сино"},
 	}, {
-		ID:               5,
+		ID:               6,
 		Name:             "Old House",
 		Owner:            "Bob",
 		Price:            550_000,
@@ -47,7 +47,7 @@ var houses = []House{
 		ID:               4,
 		Name:             "House in center of Norak",
 		Owner:            "Marla",
-		Price:            200_000,
+		Price:            2_200_000,
 		DistanceToCenter: 1100,
 		City:             City{Name: "Norak"},
 		District:         District{Name: "Center"},
@@ -55,18 +55,18 @@ var houses = []House{
 }
 
 func ExampleSortByPrice() {
-	fmt.Println(SortByPrice(houses, 300_000))
-	// Output: [{2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {4  House in center of Norak 200000   1100 {Norak} {0 Center} Marla}]
+	fmt.Println(SortByPrice(houses))
+	// Output: [{2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {6  Old House 550000   550 {Dushanbe} {0 Сино} Bob} {4  House in center of Norak 2200000   1100 {Norak} {0 Center} Marla}]
 }
 
 func ExampleSortByMaxPrice() {
 	fmt.Println(SortByMaxPrice(houses, 300_000))
-	// Output:  [{1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {5  Old House 550000   550 {Dushanbe} {0 Сино} Bob}]
+	// Output:  [{1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {6  Old House 550000   550 {Dushanbe} {0 Сино} Bob} {4  House in center of Norak 2200000   1100 {Norak} {0 Center} Marla}]
 }
 
 func ExampleSortByMinPrice() {
 	fmt.Println(SortByMinPrice(houses, 300_000))
-	// Output: [{2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {4  House in center of Norak 200000   1100 {Norak} {0 Center} Marla}]
+	// Output: [{2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler}]
 }
 
 func ExampleSearchByPriceBetween() {
@@ -76,21 +76,21 @@ func ExampleSearchByPriceBetween() {
 
 func ExampleSortByDistanceMin() {
 	fmt.Println(SortByDistanceMin(houses))
-	// Output: [{3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {5  Old House 550000   550 {Dushanbe} {0 Сино} Bob} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {4  House in center of Norak 200000   1100 {Norak} {0 Center} Marla}]
+	// Output: [{3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {6  Old House 550000   550 {Dushanbe} {0 Сино} Bob} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {4  House in center of Norak 2200000   1100 {Norak} {0 Center} Marla}]
 }
 
 func ExampleSortByDistanceMax() {
 	fmt.Println(SortByDistanceMax(houses))
-	// Output:  [{1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {4  House in center of Norak 200000   1100 {Norak} {0 Center} Marla} {5  Old House 550000   550 {Dushanbe} {0 Сино} Bob}]
+	// Output:  [{1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {4  House in center of Norak 2200000   1100 {Norak} {0 Center} Marla} {6  Old House 550000   550 {Dushanbe} {0 Сино} Bob}]
 }
 
 func ExampleFindByDistrict() {
 	fmt.Println(FindByDistrict(houses, "Сино"))
-	// Output: [{5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {5  Old House 550000   550 {Dushanbe} {0 Сино} Bob}]
+	// Output: [{5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {6  Old House 550000   550 {Dushanbe} {0 Сино} Bob}]
 }
 
 func ExampleFindByDistricts() {
 	districts := []string{"Сино", "Сомони"}
 	fmt.Println(FindByDistricts(houses, districts))
-	// Output: [{3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {5  Old House 550000   550 {Dushanbe} {0 Сино} Bob}]
+	// Output: [{3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {6  Old House 550000   550 {Dushanbe} {0 Сино} Bob}]
 }
