@@ -10,7 +10,7 @@ var houses = []House{
 		Price:            350_000,
 		DistanceToCenter: 400,
 		City:             City{Name: "Khujand"},
-		Districts:        Districts{Name: "Airport"},
+		District:         District{Name: "Airport"},
 	}, {
 		ID:               2,
 		Name:             "Appartment somoni",
@@ -18,7 +18,7 @@ var houses = []House{
 		Price:            300_000,
 		DistanceToCenter: 300,
 		City:             City{Name: "Dushanbe"},
-		Districts:        Districts{Name: "Шохмансур"},
+		District:         District{Name: "Шохмансур"},
 	}, {
 		ID:               3,
 		Name:             "Penthouse somoni",
@@ -26,7 +26,7 @@ var houses = []House{
 		Price:            500_000,
 		DistanceToCenter: 100,
 		City:             City{Name: "Dushanbe"},
-		Districts:        Districts{Name: "Сомони"},
+		District:         District{Name: "Сомони"},
 	}, {
 		ID:               5,
 		Name:             "New House",
@@ -34,7 +34,7 @@ var houses = []House{
 		Price:            450_000,
 		DistanceToCenter: 600,
 		City:             City{Name: "Dushanbe"},
-		Districts:        Districts{Name: "Сино"},
+		District:         District{Name: "Сино"},
 	}, {
 		ID:               5,
 		Name:             "Old House",
@@ -42,7 +42,7 @@ var houses = []House{
 		Price:            550_000,
 		DistanceToCenter: 550,
 		City:             City{Name: "Dushanbe"},
-		Districts:        Districts{Name: "Сино"},
+		District:         District{Name: "Сино"},
 	}, {
 		ID:               4,
 		Name:             "House in center of Norak",
@@ -50,7 +50,7 @@ var houses = []House{
 		Price:            200_000,
 		DistanceToCenter: 1100,
 		City:             City{Name: "Norak"},
-		Districts:        Districts{Name: "Center"},
+		District:         District{Name: "Center"},
 	},
 }
 

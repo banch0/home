@@ -14,7 +14,7 @@ type House struct {
 	Category         string
 	DistanceToCenter int64
 	City             City
-	Districts        Districts
+	District         District
 	Owner            string
 }
 
@@ -23,8 +23,8 @@ type City struct {
 	Name string
 }
 
-// Districts type
-type Districts struct {
+// District type
+type District struct {
 	ID   int8
 	Name string
 }
@@ -126,7 +126,7 @@ func SearchByPriceBetween(houses []House, price int64) []House {
 // FindByDistrict with less(a, b)...
 func FindByDistrict(houses []House, district string) []House {
 	return FindBy(houses, func(house House) bool {
-		if house.Districts.Name == district {
+		if house.District.Name == district {
 			return true
 		}
 		return false
@@ -137,7 +137,7 @@ func FindByDistrict(houses []House, district string) []House {
 func FindByDistricts(houses []House, districts []string) []House {
 	return FindBy(houses, func(house House) bool {
 		for _, district := range districts {
-			if house.Districts.Name == district {
+			if house.District.Name == district {
 				return true
 			}
 		}
