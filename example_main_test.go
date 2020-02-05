@@ -70,13 +70,18 @@ func ExampleSortByMinPrice() {
 }
 
 func ExampleSearchByPriceBetweenFindOne() {
-	fmt.Println(SearchByPriceBetween(houses, 350_000))
+	fmt.Println(SearchByPriceBetween(houses, 350_000, 390_000))
 	// Output: [{1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob}]
 }
 
 func ExampleSearchByPriceBetweenNotFound() {
-	fmt.Println(SearchByPriceBetween(houses, 200_000))
+	fmt.Println(SearchByPriceBetween(houses, 100_000, 200_000))
 	// Output: []
+}
+
+func ExampleSearchByPriceBetweenMany() {
+	fmt.Println(SearchByPriceBetween(houses, 350_000, 550_000))
+	// Output: [{1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {6  Old House 550000   550 {Dushanbe} {0 Сино} Bob}]
 }
 
 func ExampleSortByDistanceMin() {
