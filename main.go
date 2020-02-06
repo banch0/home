@@ -56,16 +56,6 @@ func SortBy(houses []House, less func(a, b House) bool) []House {
 	return result
 }
 
-// SortByPrice ...
-func SortByPrice(houses []House) []House {
-	result := make([]House, len(houses))
-	copy(result, houses)
-	sort.Slice(result, func(i, j int) bool {
-		return houses[i].Price <= houses[j].Price
-	})
-	return result
-}
-
 // SortByDistanceMin ...
 func SortByDistanceMin(houses []House) []House {
 	return SortBy(houses, func(a, b House) bool {
@@ -93,7 +83,7 @@ func SearchByPriceBetween(houses []House, lower, upper int64) []House {
 	})
 }
 
-// FindByDistrict with less(a, b)...
+// FindByDistrict ...
 func FindByDistrict(houses []House, district string) []House {
 	return FindBy(houses, func(house House) bool {
 		if house.District.Name == district {
@@ -103,7 +93,7 @@ func FindByDistrict(houses []House, district string) []House {
 	})
 }
 
-// FindByDistricts with less(a, b)...
+// FindByDistricts ...
 func FindByDistricts(houses []House, districts []string) []House {
 	return FindBy(houses, func(house House) bool {
 		for _, district := range districts {
