@@ -60,13 +60,13 @@ func ExampleSortByPrice() {
 }
 
 func ExampleSortByMaxPrice() {
-	fmt.Println(SortByMaxPrice(houses, 300_000))
-	// Output:  [{1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {6  Old House 550000   550 {Dushanbe} {0 Сино} Bob} {4  House in center of Norak 2200000   1100 {Norak} {0 Center} Marla}]
+	fmt.Println(SortByMaxPrice(houses))
+	// Output: [{4  House in center of Norak 2200000   1100 {Norak} {0 Center} Marla} {6  Old House 550000   550 {Dushanbe} {0 Сино} Bob} {3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler}]
 }
 
 func ExampleSortByMinPrice() {
-	fmt.Println(SortByMinPrice(houses, 300_000))
-	// Output: [{2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler}]
+	fmt.Println(SortByMinPrice(houses))
+	// Output: [{2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {6  Old House 550000   550 {Dushanbe} {0 Сино} Bob} {4  House in center of Norak 2200000   1100 {Norak} {0 Center} Marla}]
 }
 
 func ExampleSearchByPriceBetweenFindOne() {
@@ -91,7 +91,7 @@ func ExampleSortByDistanceMin() {
 
 func ExampleSortByDistanceMax() {
 	fmt.Println(SortByDistanceMax(houses))
-	// Output:  [{1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla} {4  House in center of Norak 2200000   1100 {Norak} {0 Center} Marla} {6  Old House 550000   550 {Dushanbe} {0 Сино} Bob}]
+	// Output:  [{4  House in center of Norak 2200000   1100 {Norak} {0 Center} Marla} {5  New House 450000   600 {Dushanbe} {0 Сино} Cornelius} {6  Old House 550000   550 {Dushanbe} {0 Сино} Bob} {1  Penthause somoni 350000   400 {Khujand} {0 Airport} Bob} {2  Appartment somoni 300000   300 {Dushanbe} {0 Шохмансур} Tyler} {3  Penthouse somoni 500000   100 {Dushanbe} {0 Сомони} Marla}]
 }
 
 func ExampleFindByDistrict() {
