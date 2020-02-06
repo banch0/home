@@ -81,9 +81,31 @@ type District struct {
 // 	},
 // }
 
-func main() {
-	// d := SearchByPriceBetween(houses, 350_000, 550_000)
-	// log.Println(d)
+func main() {}
+
+// SortByMaxPrice ...
+func SortByMaxPrice(houses []House) []House {
+	return SortBy(houses, func(a, b House) bool {
+		return a.Price >= b.Price
+	})
+}
+
+// SortByMinPrice ...
+func SortByMinPrice(houses []House) []House {
+	return SortBy(houses, func(a, b House) bool {
+		return a.Price <= b.Price
+	})
+}
+
+// SortBy ...
+func SortBy(houses []House, less func(a, b House) bool) []House {
+	result := make([]House, len(houses))
+	copy(result, houses)
+
+	sort.Slice(result, func(i, j int) bool {
+		return less(result[i], result[j])
+	})
+	return result
 }
 
 // SortByPrice ...
@@ -96,56 +118,23 @@ func SortByPrice(houses []House) []House {
 	return result
 }
 
-// PrimarySortFunc ...
-func PrimarySortFunc(houses []House, predicate func(item House) bool) []House {
-	result := make([]House, 0)
-	for _, house := range houses {
-		if predicate(house) {
-			result = append(result, house)
-		}
-	}
-	return result
-}
-
-//
-
-// SortByMaxPrice ...
-func SortByMaxPrice(houses []House, price int64) []House {
-	return PrimarySortFunc(houses, func(house House) bool {
-		return house.Price >= price
-	})
-}
-
-// SortByMinPrice ...+
-func SortByMinPrice(houses []House, price int64) []House {
-	return PrimarySortFunc(houses, func(house House) bool {
-		return house.Price <= price
-	})
-}
-
 // SortByDistanceMin ...
 func SortByDistanceMin(houses []House) []House {
-	result := make([]House, len(houses))
-	copy(result, houses)
-	sort.Slice(result, func(i, j int) bool {
-		return houses[i].DistanceToCenter <= houses[j].DistanceToCenter
+	return SortBy(houses, func(a, b House) bool {
+		return a.DistanceToCenter <= b.DistanceToCenter
 	})
-	return result
 }
 
 // SortByDistanceMax ...
 func SortByDistanceMax(houses []House) []House {
-	result := make([]House, len(houses))
-	copy(result, houses)
-	sort.Slice(result, func(i, j int) bool {
-		return houses[i].DistanceToCenter >= houses[j].DistanceToCenter
+	return SortBy(houses, func(a, b House) bool {
+		return a.DistanceToCenter >= b.DistanceToCenter
 	})
-	return result
 }
 
 // SearchByPriceBetween ...
 func SearchByPriceBetween(houses []House, lower, upper int64) []House {
-	return PrimarySortFunc(houses, func(house House) bool {
+	return FindBy(houses, func(house House) bool {
 		if house.Price < lower {
 			return false
 		}
