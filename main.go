@@ -29,58 +29,6 @@ type District struct {
 	Name string
 }
 
-// var houses = []House{
-// 	{
-// 		ID:               1,
-// 		Name:             "Penthause somoni",
-// 		Owner:            "Bob",
-// 		Price:            350_000,
-// 		DistanceToCenter: 400,
-// 		City:             City{Name: "Khujand"},
-// 		District:         District{Name: "Airport"},
-// 	}, {
-// 		ID:               2,
-// 		Name:             "Appartment somoni",
-// 		Owner:            "Tyler",
-// 		Price:            300_000,
-// 		DistanceToCenter: 300,
-// 		City:             City{Name: "Dushanbe"},
-// 		District:         District{Name: "Шохмансур"},
-// 	}, {
-// 		ID:               3,
-// 		Name:             "Penthouse somoni",
-// 		Owner:            "Marla",
-// 		Price:            500_000,
-// 		DistanceToCenter: 100,
-// 		City:             City{Name: "Dushanbe"},
-// 		District:         District{Name: "Сомони"},
-// 	}, {
-// 		ID:               5,
-// 		Name:             "New House",
-// 		Owner:            "Cornelius",
-// 		Price:            450_000,
-// 		DistanceToCenter: 600,
-// 		City:             City{Name: "Dushanbe"},
-// 		District:         District{Name: "Сино"},
-// 	}, {
-// 		ID:               6,
-// 		Name:             "Old House",
-// 		Owner:            "Bob",
-// 		Price:            550_000,
-// 		DistanceToCenter: 550,
-// 		City:             City{Name: "Dushanbe"},
-// 		District:         District{Name: "Сино"},
-// 	}, {
-// 		ID:               4,
-// 		Name:             "House in center of Norak",
-// 		Owner:            "Marla",
-// 		Price:            2_200_000,
-// 		DistanceToCenter: 1100,
-// 		City:             City{Name: "Norak"},
-// 		District:         District{Name: "Center"},
-// 	},
-// }
-
 func main() {}
 
 // SortByMaxPrice ...
